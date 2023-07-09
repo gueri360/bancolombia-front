@@ -1,0 +1,27 @@
+<form [formGroup]="taskForm" (submit)="onSubmit">
+  <div class="simple-input">
+    <label for="name" class="input-label">nombre </label>
+    <input type="name" id="name" formControlName="name" aria-describedby="nameError" >
+    <div class="form-error" id="nameError" *ngIf="taskForm.get('name')?.invalid && (taskForm.get('name')?.dirty || taskForm.get('name')?.touched)">
+      <div class="error-text" *ngIf="taskForm.get('name')?.hasError('required')">El nombre es obligatorio.</div>
+    </div>
+  </div>
+
+  <div class="simple-input">
+    <label for="description"  class="input-label">description</label>
+    <input type="text" id="description" formControlName="description" aria-describedby="descriptionError" >
+    <div class="form-error" id="descriptionError" *ngIf="taskForm.get('description')?.invalid && (taskForm.get('description')?.dirty || taskForm .get('description')?.touched)">
+      <div class="error-text" *ngIf="taskForm.get('description')?.hasError('required')">La description es obligatoria.</div>
+    </div>
+  </div>
+
+  <div class="simple-input">
+    <label for="date"  class="input-label">fecha</label>
+    <input type="date" id="date" formControlName="date" aria-describedby="dateError">
+    <div class="form-error" id="dateError" *ngIf="taskForm.get('date')?.invalid && (taskForm.get('date')?.dirty || taskForm.get('date')?.touched)">
+      <div class="error-text" *ngIf="taskForm.get('date')?.hasError('required')">el precio  es obligatoria.</div>
+    </div>
+  </div>
+</form>
+
+<button (click)="loadDoers()">load doers</button>

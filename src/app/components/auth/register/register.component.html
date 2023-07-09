@@ -1,0 +1,72 @@
+<div class="container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="normal-form">
+    <h3 class="form-tittle">Registro</h3>
+    <div class="simple-input">
+      <label for="username" class="input-label">username</label>
+      <input type="text" id="username" formControlName="username" aria-describedby="usernameError">
+      <div class="form-error" id="usernameError" *ngIf="registerForm.get('username')?.invalid && (registerForm.get('username')?.dirty || registerForm.get('username')?.touched)">
+        <div class="error-text" *ngIf="registerForm.get('username')?.hasError('required')">username es olbigarotio.</div>
+      </div>
+    </div>
+
+    <div class="simple-input">
+      <label for="email" class="input-label">email</label>
+      <input type="email" id="email" formControlName="email" aria-describedby="emailError">
+      <div class="form-error" id="emailError" *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)">
+        <div class="error-text" *ngIf="registerForm.get('email')?.hasError('required')">email es olbigarotio.</div>
+        <div class="error-text" *ngIf="registerForm.get('email')?.hasError('email')">email no es valido</div>
+      </div>
+    </div>
+    <div class="simple-input">
+      <label for="password" class="input-label">password</label>
+      <input type="password" id="password" formControlName="password" aria-describedby="passwordError">
+      <div class="form-error" id="passwordError" *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+<!--        <div class="error-text" *ngIf="registerForm.get('password')?.hasError('required')">username es olbigarotio.</div>-->
+        <div class="error-text" *ngIf="registerForm.get('password')?.hasError('required')">La contraseña es obligatoria.</div>
+        <div class="error-text" *ngIf="registerForm.get('password')?.hasError('minlength')">La contraseña debe tener al menos 8 caracteres.</div>
+      </div>
+    </div>
+    <div class="simple-input">
+      <label for="passwordConfirm" class="input-label">passwordConfirm</label>
+      <input type="password" id="passwordConfirm" formControlName="passwordConfirm" aria-describedby="passwordConfirmError">
+      <div class="form-error" id="passwordConfirmError" *ngIf="registerForm.get('passwordConfirm')?.invalid && (registerForm.get('passwordConfirm')?.dirty || registerForm.get('passwordConfirm')?.touched)">
+<!--        <div class="error-text" *ngIf="registerForm.get('passwordConfirm')?.hasError('required')">username es olbigarotio.</div>-->
+        <div class="error-text" *ngIf="registerForm.get('passwordConfirm')?.hasError('required')">La contraseña es obligatoria.</div>
+        <div class="error-text" *ngIf="registerForm.get('passwordConfirm')?.hasError('minlength')">La contraseña debe tener al menos 8 caracteres.</div>
+      </div>
+    </div>
+    <div class="simple-input">
+      <label for="name" class="input-label">name</label>
+      <input type="text" id="name" formControlName="name" aria-describedby="nameError">
+      <div class="form-error" id="nameError" *ngIf="registerForm.get('name')?.invalid && (registerForm.get('name')?.dirty || registerForm.get('name')?.touched)">
+        <div class="error-text" *ngIf="registerForm.get('name')?.hasError('required')">username es olbigarotio.</div>
+      </div>
+    </div>
+    <div class="simple-input">
+      <label for="lastname" class="input-label">lastname</label>
+      <input type="text" id="lastname" formControlName="lastname" aria-describedby="lastnameError">
+      <div class="form-error" id="lastnameError" *ngIf="registerForm.get('lastname')?.invalid && (registerForm.get('lastname')?.dirty || registerForm.get('lastname')?.touched)">
+        <div class="error-text" *ngIf="registerForm.get('lastname')?.hasError('required')">username es olbigarotio.</div>
+      </div>
+    </div>
+    <div class="simple-input">
+      <label for="userType" class="input-label">User Type</label>
+      <select id="userType" formControlName="userType" aria-describedby="userTypeError">
+        <option value="">Select user type</option>
+        <option value="DOER">DOER</option>
+        <option value="CLIENT">CLIENT</option>
+      </select>
+      <div class="form-error" id="userTypeError" *ngIf="registerForm.get('userType')?.invalid && (registerForm.get('userType')?.dirty || registerForm.get('userType')?.touched)">
+        <div class="error-text" *ngIf="registerForm.get('userType')?.hasError('required')">User type is required.</div>
+      </div>
+    </div>
+
+    <button class="primary-button" [ngClass]="registerForm.invalid? 'disabled': ''" type="submit" [disabled]="registerForm.invalid">Registrar</button>
+
+    <div class="form-error" *ngIf="error">
+      <p>usuario o contraseña erróneos</p>
+    </div>
+  </form>
+
+
+</div>

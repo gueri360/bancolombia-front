@@ -1,0 +1,36 @@
+<div class="container-info">
+
+  <h2>Tu información</h2>
+
+
+  <div class="img-random">
+    <app-random-img [seed]="userInfo.name"/>
+  </div>
+  <div class="content-info">
+    <div class="text">
+      <p>
+        <strong>Nombre:</strong>
+        <span aria-live="polite">{{userInfo.name}} {{userInfo.lastname}}</span>
+      </p>
+    </div>
+    <div class="text">
+      <p>
+        <strong>Email:</strong>
+        <span aria-live="polite">{{userInfo.email}}</span>
+      </p>
+    </div>
+    <div class="text">
+      <p>
+        <strong>Cuando te uniste:</strong>
+        <span aria-live="polite">{{userInfo.created | date}}</span>
+      </p>
+    </div>
+    <div class="text">
+      <p>
+        <strong>Eres:</strong>
+        <span aria-live="polite">{{userInfo.userType === 'DOER' ? 'Colaborador' : 'Cliente'}}</span>
+      </p>
+    </div>
+  </div>
+
+</div>

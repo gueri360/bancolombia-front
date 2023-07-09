@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="tab">
+   <span class="button">
+     <button
+       (click)="setActiveTab('login')"
+       class="blue-btn"
+       [ngClass]="{ 'active': activeTab === 'login', 'select' : activeTab === 'login'}">
+      Inicio de sesión
+    </button></span>
+   <span class="button"> <button
+     (click)="setActiveTab('register')"
+     class="blue-btn"
+     [ngClass]="{ 'active': activeTab === 'register', 'select' : activeTab === 'register' }">
+      Registro
+    </button></span>
+  </div>
+
+
+  <div class="content">
+    <ng-container *ngIf="activeTab === 'login'">
+      <div class="tab-section">
+        <app-login/>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="activeTab === 'register'">
+      <div class="tab-section">
+        <app-register/>
+      </div>
+    </ng-container>
+  </div>
+
+<!--  <button (click)="closeSection()">closesection</button>-->
+</div>

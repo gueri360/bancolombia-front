@@ -1,0 +1,48 @@
+<div class="container">
+  <form [formGroup]="abilitiesForm" (ngSubmit)="onSubmit()" class="normal-form">
+    <div class="simple-input">
+      <label for="name" class="input-label">Nombre </label>
+      <input type="name" id="name" formControlName="name" aria-describedby="nameError">
+      <div class="form-error" id="nameError" *ngIf="abilitiesForm.get('name')?.invalid && (abilitiesForm.get('name')?.dirty || abilitiesForm.get('name')?.touched)">
+        <div class="error-text" *ngIf="abilitiesForm.get('email')?.hasError('required')">El nombre es obligatorio.</div>
+      </div>
+    </div>
+
+    <div class="simple-input">
+      <label for="description"  class="input-label">description</label>
+      <input type="text" id="description" formControlName="description" aria-describedby="descriptionError">
+      <div class="form-error" id="descriptionError" *ngIf="abilitiesForm.get('description')?.invalid && (abilitiesForm.get('description')?.dirty || abilitiesForm.get('description')?.touched)">
+        <div class="error-text" *ngIf="abilitiesForm.get('description')?.hasError('required')">La description es obligatoria.</div>
+      </div>
+    </div>
+
+    <div class="simple-input">
+      <label for="price"  class="input-label">precio</label>
+      <input type="number" id="price" formControlName="price" aria-describedby="pricedError">
+      <div class="form-error" id="priceError" *ngIf="abilitiesForm.get('price')?.invalid && (abilitiesForm.get('price')?.dirty || abilitiesForm.get('price')?.touched)">
+        <div class="error-text" *ngIf="abilitiesForm.get('price')?.hasError('required')">el precio  es obligatoria.</div>
+      </div>
+    </div>
+
+    <div class="simple-input">
+      <label for="range"  class="input-label">Experticia</label>
+      <input type="number" id="range" formControlName="range" aria-describedby="rangeError">
+      <div class="form-error" id="passwordError" *ngIf="abilitiesForm.get('range')?.invalid && (abilitiesForm.get('range')?.dirty || abilitiesForm.get('range')?.touched)">
+        <div class="error-text" *ngIf="abilitiesForm.get('range')?.hasError('required')">La contraseña es obligatoria.</div>
+      </div>
+    </div>
+
+    <button class="primary-button" [ngClass]="abilitiesForm.invalid? 'disabled': ''" type="submit" [disabled]="!abilitiesForm.valid">crear habilidad</button>
+
+    <div class="form-error" *ngIf="error">
+      <p>Usuario o Contraseña erroneos</p>
+    </div>
+
+    <div class="abilitie-form" *ngIf="created">
+      <p>Habilidad creadad correctamente</p>
+    </div>
+  </form>
+
+
+  <button (click)="aux()">a</button>
+</div>

@@ -1,0 +1,14 @@
+<div class="container">
+
+  <ng-container *ngIf="(list$ | async) as data">
+    <div *ngFor="let abilitie of data">
+      <span>Nombre: {{abilitie.name}}</span>
+      <span>Descripcion: {{abilitie.description}}</span>
+      <span>Precio: {{abilitie.price |  currency:'COP':'code'}}</span>
+      <span>Experticia: {{abilitie.range }}</span>
+
+    </div>
+  </ng-container>
+
+
+</div>

@@ -1,0 +1,39 @@
+<div class="container-dashboard">
+  <nav class="menu">
+    <button (click)="setActiveTab('info')" [class.active]="activeTab === 'info'">Ver info</button>
+    <button (click)="setActiveTab('form')" [class.active]="activeTab === 'form'">Crear Tarea de sesión</button>
+    <button (click)="setActiveTab('list')" [class.active]="activeTab === 'list'">ver tareas</button>
+    <button (click)="setActiveTab('notifications')" [class.active]="activeTab === 'notifications'">notificaciones</button>
+    <app-close/>
+  </nav>
+  <ng-container *ngIf="activeTab === 'info'">
+    <div class="section" *ngIf="userInfo">
+      <app-user-info [userInfo]="userInfo"/>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="activeTab === 'form'">
+    <div class="section" *ngIf="userInfo">
+      <app-abilities-form [doerId]="userInfo.id"/>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="activeTab === 'list'">
+    <div class="section" *ngIf="userInfo">
+      <app-abilitie-list [doerId]="userInfo.id"/>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="activeTab === 'notifications'">
+    <div class="section" *ngIf="userInfo">
+      notificaciones
+    </div>
+  </ng-container>
+
+  <div class="section">
+
+  </div>
+</div>
+
+
+
+<ng-template #loading>
+  <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+</ng-template>
