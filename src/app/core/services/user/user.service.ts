@@ -19,4 +19,11 @@ export class UserService {
         return res
       }))
   }
+
+  getInfoUSerById(id:string): Observable<any> {
+    console.log('entre')
+    return from(this.pb.collection('users').getOne(id,
+      {'$autoCancel': false}))
+
+  }
 }

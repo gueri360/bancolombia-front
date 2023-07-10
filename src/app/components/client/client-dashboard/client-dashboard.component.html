@@ -1,27 +1,25 @@
-<div class="container-dashboard">
- <nav class="container-dashboard">
-   <button (click)="setActiveTab('info')" [class.active]="activeTab === 'info'">Ver info</button>
-   <button (click)="setActiveTab('form')" [class.active]="activeTab === 'form'">Crear Tarea de sesión</button>
-   <button (click)="setActiveTab('list')" [class.active]="activeTab === 'list'">ver tareas</button>
-   <button (click)="setActiveTab('notifications')" [class.active]="activeTab === 'notifications'">notificaciones</button>
-   <app-close/>
- </nav>
+<div class="container-dashboard container">
+ <div class="container-dashboard tab">
+   <span class="button"><button (click)="setActiveTab('info')" class="blue-btn" [class.active]="activeTab === 'info'">Ver info</button></span>
+   <span class="button"><button (click)="setActiveTab('form')" class="blue-btn" [class.active]="activeTab === 'form'">Crear Tarea</button></span>
+   <span class="button"><button (click)="setActiveTab('notifications')" class="blue-btn"  [class.active]="activeTab === 'notifications'">notificaciones</button></span>
+   <span class="button"><app-close/></span>
+ </div>
+<div class="content">
   <ng-container *ngIf="activeTab === 'info'">
-    <div class="section-one" *ngIf="userInfo">
+    <div class="section-one tab-section" *ngIf="userInfo">
       <app-user-info [userInfo]="userInfo"/>
     </div>
   </ng-container>
 
   <ng-container *ngIf="activeTab === 'form'">
-    <app-task-form [userInfo]="userInfo"/>
+    <div class="section-two tab-section"><app-task-form [userInfo]="userInfo"/></div>
   </ng-container>
 
-  <ng-container *ngIf="activeTab === 'list'">
-    lista
-  </ng-container>
   <ng-container *ngIf="activeTab === 'notifications'">
     lista
   </ng-container>
+</div>
 </div>
 
 

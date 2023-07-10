@@ -1,0 +1,35 @@
+<ng-container class="content " *ngIf="(notificationsList$ | async) as data; else loadig">
+{{data.items}}
+  <div class="cotent" *ngFor="let not of data.items">
+    {{not}}
+    <span class="task">
+      <span class="name">nombre</span>
+      <span class="description">desco</span>
+    </span>
+    <span class="client">
+      no,bre client
+    </span>
+    <span class="price">
+      price
+    </span>
+    <span class="date">
+      price
+    </span>
+    <span class="actions" *ngIf="!not.notified">
+      <button (click)="confirmTask(false,not.id)">rechazar</button>
+      <button (click)="confirmTask(true, not.id)">Aceptar</button>
+    </span>
+    <span class="actions" *ngIf="not.notified">
+      {{not.acceptedByDoer}}
+      <span *ngIf="not.acceptedByDoer">Aceptada</span>
+      <span *ngIf="!not.acceptedByDoer">Rechazada</span>
+    </span>
+
+  </div>
+
+</ng-container>
+
+
+<ng-template #loadig>
+  cargando....
+</ng-template>

@@ -23,7 +23,7 @@
   </ng-container>
   <ng-container *ngIf="activeTab === 'notifications'">
     <div class="section" *ngIf="userInfo">
-      notificaciones
+      <app-notification-by-user  userType="doerId" [userId]="userInfo.id"/>
     </div>
   </ng-container>
 

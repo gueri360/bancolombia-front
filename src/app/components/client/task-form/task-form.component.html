@@ -1,4 +1,5 @@
-<form [formGroup]="taskForm" (submit)="onSubmit">
+<form [formGroup]="taskForm"  class="normal-form">
+<div class="section-1" *ngIf="step1">
   <div class="simple-input">
     <label for="name" class="input-label">nombre </label>
     <input type="name" id="name" formControlName="name" aria-describedby="nameError" >
@@ -22,6 +23,33 @@
       <div class="error-text" *ngIf="taskForm.get('date')?.hasError('required')">el precio  es obligatoria.</div>
     </div>
   </div>
+</div>
+
+
+  <div class="section-2" *ngIf="step2">
+    <div class="simple-input">
+      <label for="description"  class="input-label">precio</label><p>Paga sugerida: {{recommendPrice() | currency: 'COP':'code' }}</p>
+      <input type="number" id="price" formControlName="price" aria-describedby="priceError" >
+      <div class="form-error" id="priceError" *ngIf="taskForm.get('price')?.invalid && (taskForm.get('price')?.dirty || taskForm .get('price')?.touched)">
+        <div class="error-text" *ngIf="taskForm.get('price')?.hasError('required')">La description es obligatoria.</div>
+      </div>
+    </div>
+
+
+    <div class="prospects" >
+      <ng-container *ngIf="cleanProspects.length>0; else error">
+        <div class="prospect-card" *ngFor="let pros of cleanProspects" (click)="selectProspect(pros.id, pros.doerId)">
+          <app-card-user [id]="pros.doerId" [rate]="pros.range" [price]="pros.price" ></app-card-user>
+        </div>
+      </ng-container>
+    </div>
+  </div>
 </form>
 
-<button (click)="loadDoers()">load doers</button>
+<ng-template #error>
+ <p>no hay colaboradores apra esta tarea</p>
+</ng-template>
+<button (click)="loadDoers()" *ngIf="step1">siguiente</button>
+<button (click)="back()" *ngIf="step2">retroceder</button>
+<button (click)="submit()" *ngIf="step2">Publicar tarea</button>
+

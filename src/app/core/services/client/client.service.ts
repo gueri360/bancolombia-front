@@ -18,15 +18,10 @@ export class ClientService {
 
 
 
-  createTaskFromClientSide(task: TaskModel): Observable<AbilitiesDoerModels> {
-    return of(this.pb.collection('task').create(task))
+  createTaskFromClientSide(task: TaskModel): Observable<any> {
+    return from(this.pb.collection('task').create(task))
   }
 
-  getDoersForTask(words: string):Observable<any> {
-    return from(this.pb.collection('abilities').getList(1, 50 ,
-      {filter: 'description?~"'+words +'"'}
-      ))
-  }
   getDoersByKeyWords(keywords: string[]): Observable<any> {
     const doerObservables: Observable<any>[] = keywords.map((word) =>
       from(
