@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
+    "@angular/service-worker": "^16.1.0",
     "@dicebear/collection": "^6.0.4",
     "@dicebear/core": "^6.0.4",
     "keyword-extractor": "^0.0.25",
