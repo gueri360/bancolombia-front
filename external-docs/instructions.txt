@@ -3,3 +3,6 @@ si estas usando widnos correr el el comando ./pocketbase.exe serve
 
 admin user: admin@test.com
 password: admin12345678
+
+
+url proyecto https://gueri360.github.io/bancolombia-front/
